@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="62f-zs-XlE">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--The Meal-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController title="The Meal" id="BYZ-38-t0r" customClass="ViewController" customModule="The_Meal" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Meal search" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i52-NV-NVQ">
+                                <rect key="frame" x="24.5" y="155" width="365" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="i52-NV-NVQ" secondAttribute="height" multiplier="73:9" id="0TW-WO-gi0"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z2I-m0-j48" userLabel="baseView">
+                                <rect key="frame" x="0.0" y="215" width="414" height="681"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gCD-Ge-A62" userLabel="mealsTableView">
+                                        <rect key="frame" x="15" y="0.0" width="384" height="681"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="BYZ-38-t0r" id="MAF-qb-X7g"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="gCD-Ge-A62" secondAttribute="trailing" constant="15" id="M1M-fX-70F"/>
+                                    <constraint firstAttribute="bottom" secondItem="gCD-Ge-A62" secondAttribute="bottom" id="OGm-Me-hts"/>
+                                    <constraint firstItem="gCD-Ge-A62" firstAttribute="leading" secondItem="z2I-m0-j48" secondAttribute="leading" constant="15" id="lpB-et-AMo"/>
+                                    <constraint firstItem="gCD-Ge-A62" firstAttribute="top" secondItem="z2I-m0-j48" secondAttribute="top" id="vGG-BC-rTH"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" red="0.95686274509803915" green="0.9137254901960784" blue="0.80392156862745101" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="i52-NV-NVQ" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.0502232" id="57K-hr-bon"/>
+                            <constraint firstAttribute="bottom" secondItem="z2I-m0-j48" secondAttribute="bottom" id="UIP-Qd-rWe"/>
+                            <constraint firstItem="z2I-m0-j48" firstAttribute="top" secondItem="i52-NV-NVQ" secondAttribute="bottom" constant="15" id="Wtf-UY-sUS"/>
+                            <constraint firstItem="i52-NV-NVQ" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ajG-j1-zdb"/>
+                            <constraint firstItem="i52-NV-NVQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="c8h-ku-V98"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="z2I-m0-j48" secondAttribute="trailing" id="gdc-5P-qwb"/>
+                            <constraint firstItem="z2I-m0-j48" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hRZ-pS-vRs"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="The Meal" largeTitleDisplayMode="always" id="hKY-Ic-fUg"/>
+                    <connections>
+                        <outlet property="baseView" destination="z2I-m0-j48" id="lhH-oS-TlO"/>
+                        <outlet property="mealsTableView" destination="gCD-Ge-A62" id="paU-dU-O1n"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="713.04347826086962" y="77.678571428571431"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7Ta-2L-qEL">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="62f-zs-XlE" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="IhC-u5-4La">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ZhS-ew-5RQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ar9-Ya-u7g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-197.10144927536234" y="77.678571428571431"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
