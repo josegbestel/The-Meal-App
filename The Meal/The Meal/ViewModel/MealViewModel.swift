@@ -28,7 +28,7 @@ class MealViewModel : NSObject{
     }
     
     func callFuncToGetMealData(){
-        self.theMealService.getMealData{
+        self.theMealService.getMealData(param: Singleton.instance.searchParam){
             (mealData) in
             if let mealData = mealData{
                 self.mealData = mealData

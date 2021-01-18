@@ -9,6 +9,37 @@ import XCTest
 @testable import The_Meal
 
 class The_MealTests: XCTestCase {
+    
+    var theMealService  :TheMealService!
+    
+    
+    override func setUp() {
+        super.setUp()
+    }
+    
+    //check if you build the objects correctly
+    func testDictToObjctTheMealService(){
+        self.theMealService = TheMealService()
+        self.theMealService.getMealData(param: "Chicken"){ (meals) in
+            if let meals = meals{
+                for m in meals{
+                    if(m.title == "Chicken Handi"){
+                        
+                        //Check id
+                        XCTAssertEqual(m.id, "52795", "Mael id is equal to 52795")
+                        
+                        //Check video
+                        XCTAssertEqual(m.video, "IO0issT0Rmc", "Meal video is equal to IO0issT0Rmc")
+                        
+                        //Check first ingredient
+                        XCTAssertEqual(m.ingredients[0].ingredient, "Chicken", "Frist meal ingredient is equal to Chicken")
+                        
+                    }
+                }
+            }
+            
+        }
+    }
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

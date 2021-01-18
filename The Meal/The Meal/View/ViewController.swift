@@ -13,18 +13,18 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var mealsTableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    let searchController = UISearchController(searchResultsController: nil)
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        LoadView.shared.show(self.view)
         callToViewModelForUIUpdate()
         
         setupStyle()
-        mealsTableView.delegate = self
-        mealsTableView.dataSource = self
-        mealsTableView.register(MealTableViewCell.nib(), forCellReuseIdentifier: MealTableViewCell.identifier)
+        setupTableView()
+        setupSearchBar()
         
     }
     
@@ -32,7 +32,9 @@ class ViewController: UIViewController {
     func callToViewModelForUIUpdate(){
         //Start LoadView
         print("================== Start Load ==================")
-//        LoadView.shared.show(self.baseView)
+        self.mealsTableView.isHidden = true
+        LoadView.shared.show(self.view)
+        
         
         self.mealViewModel = MealViewModel()
         self.mealViewModel.bindMealViewModelToController = {
@@ -40,13 +42,26 @@ class ViewController: UIViewController {
                 //Stop LoadView
                 print("================== Stop Load ==================")
                 LoadView.shared.hide()
+                self.mealsTableView.isHidden = false
                 self.mealsTableView.reloadData()
+                Singleton.instance.searchParam = ""
             }
         }
     }
     
     func setupStyle(){
         self.baseView.roundCorners(corners: [.topLeft, .topRight], radius: 35.0)
+    }
+    
+    func setupTableView(){
+        mealsTableView.delegate = self
+        mealsTableView.dataSource = self
+        mealsTableView.register(MealTableViewCell.nib(), forCellReuseIdentifier: MealTableViewCell.identifier)
+    }
+    
+    func setupSearchBar(){
+        self.searchBar.delegate = self
+        self.searchBar.showsCancelButton = true
     }
 
 
@@ -56,12 +71,10 @@ class ViewController: UIViewController {
 extension ViewController :UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return mealViewModel.mealData.count
         return Singleton.instance.meals.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let meal = mealViewModel.mealData[indexPath.row]
         let meal = Singleton.instance.meals[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: MealTableViewCell.identifier) as! MealTableViewCell
         cell.setupCell(meal: meal)
@@ -73,5 +86,39 @@ extension ViewController :UITableViewDelegate, UITableViewDataSource{
         return MealTableViewCell.height
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+        print(Singleton.instance.meals[indexPath.row].title)
+        //call the details meal
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let destination = storyboard.instantiateViewController(withIdentifier: "DetailsMeal") as! DetailsMealViewController
+        destination.meal = Singleton.instance.meals[indexPath.row]
+        navigationController?.pushViewController(destination, animated: true)
+    }
+}
+
+
+extension ViewController : UISearchBarDelegate{
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.searchBar.text = ""
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.endEditing(true)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        //call func to refresh
+        Singleton.instance.searchParam = self.searchBar.text!
+        self.searchBar.endEditing(true)
+        self.callToViewModelForUIUpdate()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        //call func to filter table
+        print(self.searchBar.text)
+    }
     
 }

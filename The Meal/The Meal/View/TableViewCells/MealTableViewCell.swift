@@ -10,7 +10,7 @@ import Foundation
 
 class MealTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var thumb: UIImageView!
+    @IBOutlet weak var thumb: ImageLoader!
     @IBOutlet weak var infoView: UIView!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var area: UILabel!
@@ -18,6 +18,10 @@ class MealTableViewCell: UITableViewCell {
 
     static let identifier = "MealTableViewCell"
     static let height : CGFloat = 120.0
+    
+    static func nib() -> UINib {
+        return UINib(nibName: identifier, bundle: nil)
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,12 +39,9 @@ class MealTableViewCell: UITableViewCell {
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0))
     }
     
-    static func nib() -> UINib {
-        return UINib(nibName: identifier, bundle: nil)
-    }
-    
     func setupStyle(){
         self.contentView.layer.cornerRadius = 20.0
+        self.selectionStyle = UITableViewCell.SelectionStyle.none
     }
     
     func setupCell(meal :Meal){
@@ -50,7 +51,9 @@ class MealTableViewCell: UITableViewCell {
         self.category.text = meal.category
         
         self.thumb.image = UIImage(named: "meal-placeholder")
-        self.thumb.downloaded(from: meal.thumb)
+//        self.thumb.downloaded(from: meal.thumb)
+        guard let url = URL(string: meal.thumb) else { return }
+        self.thumb.loadImageWithUrl(url)
     }
     
 }

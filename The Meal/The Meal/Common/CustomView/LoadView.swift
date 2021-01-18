@@ -12,6 +12,7 @@ class LoadView: UIView {
     static var shared = LoadView()
     fileprivate var backView: UIView?
     fileprivate var loadIndicator: UIActivityIndicatorView?
+    private let TAG_BACKVIEW = 99
     
     func show(_ currentView : UIView) {
         DispatchQueue.main.async { [self] in
@@ -19,6 +20,7 @@ class LoadView: UIView {
             backView = {
                 let view = UIView()
                 view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.3)
+                view.tag = TAG_BACKVIEW
                 return view
             }()
             currentView.addSubview(self.backView!)

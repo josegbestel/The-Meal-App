@@ -11,12 +11,12 @@
         <!--The Meal-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="The Meal" id="BYZ-38-t0r" customClass="ViewController" customModule="The_Meal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MealController" title="The Meal" id="BYZ-38-t0r" customClass="ViewController" customModule="The_Meal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Meal search" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i52-NV-NVQ">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search by name" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i52-NV-NVQ">
                                 <rect key="frame" x="24.5" y="155" width="365" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="i52-NV-NVQ" secondAttribute="height" multiplier="73:9" id="0TW-WO-gi0"/>
@@ -26,7 +26,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z2I-m0-j48" userLabel="baseView">
                                 <rect key="frame" x="0.0" y="215" width="414" height="681"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gCD-Ge-A62" userLabel="mealsTableView">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gCD-Ge-A62" userLabel="mealsTableView">
                                         <rect key="frame" x="15" y="0.0" width="384" height="681"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <connections>
@@ -44,7 +44,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="0.95686274509803915" green="0.9137254901960784" blue="0.80392156862745101" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="0.87432690599999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="i52-NV-NVQ" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.0502232" id="57K-hr-bon"/>
                             <constraint firstAttribute="bottom" secondItem="z2I-m0-j48" secondAttribute="bottom" id="UIP-Qd-rWe"/>
@@ -55,15 +55,50 @@
                             <constraint firstItem="z2I-m0-j48" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hRZ-pS-vRs"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="The Meal" largeTitleDisplayMode="always" id="hKY-Ic-fUg"/>
+                    <navigationItem key="navigationItem" title="The Meal" largeTitleDisplayMode="always" id="hKY-Ic-fUg">
+                        <barButtonItem key="backBarButtonItem" title="back" id="q2L-jf-dnS"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="baseView" destination="z2I-m0-j48" id="lhH-oS-TlO"/>
                         <outlet property="mealsTableView" destination="gCD-Ge-A62" id="paU-dU-O1n"/>
+                        <outlet property="searchBar" destination="i52-NV-NVQ" id="3ll-ur-VjD"/>
+                        <segue destination="5iF-iN-ykh" kind="show" id="ZkD-RE-G6L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="713.04347826086962" y="77.678571428571431"/>
+        </scene>
+        <!--Details Meal View Controller-->
+        <scene sceneID="WkM-KM-nBi">
+            <objects>
+                <viewController storyboardIdentifier="DetailsMeal" id="5iF-iN-ykh" customClass="DetailsMealViewController" customModule="The_Meal" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3Mg-SH-Pbh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oys-vN-yUe" userLabel="tableView">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Lu-P1-OjT"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6Lu-P1-OjT" firstAttribute="bottom" secondItem="oys-vN-yUe" secondAttribute="bottom" id="BwS-x5-I6N"/>
+                            <constraint firstItem="6Lu-P1-OjT" firstAttribute="top" secondItem="oys-vN-yUe" secondAttribute="top" id="CnW-3Y-aFg"/>
+                            <constraint firstItem="6Lu-P1-OjT" firstAttribute="trailing" secondItem="oys-vN-yUe" secondAttribute="trailing" id="Hll-Ov-lIy"/>
+                            <constraint firstItem="oys-vN-yUe" firstAttribute="leading" secondItem="6Lu-P1-OjT" secondAttribute="leading" id="KOJ-UX-n4V"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="FED-eM-rDT"/>
+                    <connections>
+                        <outlet property="tableView" destination="oys-vN-yUe" id="ccx-XW-MH7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wxf-eE-nPq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1553.6231884057972" y="77.678571428571431"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7Ta-2L-qEL">

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="IngredientsTableViewCell" id="KGk-i7-Jjw" customClass="IngredientsTableViewCell" customModule="The_Meal" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="417" height="75"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="417" height="75"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PYP-5s-ekb" userLabel="baseView">
+                        <rect key="frame" x="0.0" y="0.0" width="417" height="75"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6uy-Ae-UAj" userLabel="ingredientImageView" customClass="ImageLoader" customModule="The_Meal" customModuleProvider="target">
+                                <rect key="frame" x="10" y="15" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="6uy-Ae-UAj" secondAttribute="height" multiplier="1:1" id="SF2-9e-Ljt"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1/3 cup Garlic" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="vrl-8y-44Y" userLabel="ingredientLabel">
+                                <rect key="frame" x="76" y="25.5" width="311" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="vrl-8y-44Y" secondAttribute="height" multiplier="274:21" id="CHB-ug-qk8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uWM-So-22h" userLabel="LineView">
+                                <rect key="frame" x="65" y="22.5" width="1" height="30"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="1" id="VW6-lJ-Xtw"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="47k-kZ-i2g" userLabel="StyleView">
+                                <rect key="frame" x="0.0" y="22.5" width="5" height="30"/>
+                                <color key="backgroundColor" red="0.37647058820000001" green="0.69803921570000005" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="5" id="4av-UU-qrY"/>
+                                    <constraint firstAttribute="height" constant="30" id="SMb-ND-CXC"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6uy-Ae-UAj" firstAttribute="height" secondItem="PYP-5s-ekb" secondAttribute="height" multiplier="0.6" id="66Q-3v-dcC"/>
+                            <constraint firstItem="uWM-So-22h" firstAttribute="height" secondItem="PYP-5s-ekb" secondAttribute="height" multiplier="0.4" id="CQd-NT-hg9"/>
+                            <constraint firstItem="47k-kZ-i2g" firstAttribute="centerY" secondItem="PYP-5s-ekb" secondAttribute="centerY" id="DUK-zw-pcY"/>
+                            <constraint firstItem="47k-kZ-i2g" firstAttribute="leading" secondItem="PYP-5s-ekb" secondAttribute="leading" id="H5N-Gb-ylc"/>
+                            <constraint firstAttribute="trailing" secondItem="vrl-8y-44Y" secondAttribute="trailing" constant="30" id="HSl-7h-sKw"/>
+                            <constraint firstItem="vrl-8y-44Y" firstAttribute="leading" secondItem="uWM-So-22h" secondAttribute="trailing" constant="10" id="Mag-GS-uWK"/>
+                            <constraint firstItem="6uy-Ae-UAj" firstAttribute="centerY" secondItem="PYP-5s-ekb" secondAttribute="centerY" id="OxJ-u2-Bn6"/>
+                            <constraint firstItem="vrl-8y-44Y" firstAttribute="centerY" secondItem="PYP-5s-ekb" secondAttribute="centerY" id="QS0-R9-G65"/>
+                            <constraint firstItem="uWM-So-22h" firstAttribute="centerY" secondItem="PYP-5s-ekb" secondAttribute="centerY" id="ioy-HB-ITR"/>
+                            <constraint firstItem="uWM-So-22h" firstAttribute="leading" secondItem="6uy-Ae-UAj" secondAttribute="trailing" constant="10" id="klu-Ef-cDR"/>
+                            <constraint firstItem="6uy-Ae-UAj" firstAttribute="leading" secondItem="PYP-5s-ekb" secondAttribute="leading" constant="10" id="mst-ma-lWh"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="PYP-5s-ekb" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="2ZT-px-OH3"/>
+                    <constraint firstItem="PYP-5s-ekb" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="7m5-2K-c7t"/>
+                    <constraint firstItem="PYP-5s-ekb" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Fav-1X-AVN"/>
+                    <constraint firstItem="PYP-5s-ekb" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="ZV7-1v-u7o"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="baseView" destination="PYP-5s-ekb" id="w8Q-WQ-P6U"/>
+                <outlet property="ingredientImageView" destination="6uy-Ae-UAj" id="ovF-yr-3tQ"/>
+                <outlet property="ingredientLabel" destination="vrl-8y-44Y" id="ryZ-KN-L8x"/>
+                <outlet property="styleView" destination="47k-kZ-i2g" id="Div-0a-CuW"/>
+            </connections>
+            <point key="canvasLocation" x="-60" y="28"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
